@@ -1,4 +1,20 @@
+$primary: hsl(225, 100%, 50%);
+$secondary: hsl(0, 0%, 94%);
+
+$alert: hsl(4, 85%, 42%);
+$success: hsl(125, 83%, 37%);
+$light: hsl(0, 0%, 100%);
+$medium: hsl(0, 0%, 60%);
+$dark: hsl(0, 0%, 10%);
+
+$html: #e34c26;
+$javascript: #F0DB4F;
+
+$base-gap: 18px;
 $base-font-size: 16px;
+$base-radius: 6px;
+$base-transition: .3s;
+
 @function rem($to-size, $from-size: $base-font-size) {
 	@if $to-size == 0px {
 		@return 0;
@@ -6,24 +22,23 @@ $base-font-size: 16px;
 	@return $to-size / $from-size * 1rem;
 }
 
-$base-radius: 6px;
-$base-transition: .3s;
-$alert: hsl(4, 85%, 42%);
-$success: hsl(125, 83%, 37%);
-$light: hsl(0, 0%, 100%);
-$base-gap: 1rem;
-
-$dark: hsl(0, 0%, 10%);
-
-$primary: hsl(225, 100%, 50%);
-$secondary: hsl(0, 0%, 94%);
-$medium: hsl(0, 0%, 60%);
-
-$html: #e34c26;
-$javascript: #F0DB4F;
+@font-face {
+  font-family: 'MonoLisa';
+  src: url('../fonts/MonoLisa-Regular.woff2') format('woff2'),
+}
 
 html {
   scroll-behavior: smooth;
+}
+
+::selection {
+  background: $primary;
+  color: $light;
+}
+
+::-moz-selection {
+  background: $primary;
+  color: $light;
 }
 
 * {
@@ -34,135 +49,271 @@ html {
 }
 
 body {
-  font-family: "Arial", sans-serif;
+  font-family: "Segoe UI", "Roboto", "Helvetica Neue", "Arial", "Noto Sans", sans-serif;
 }
 
-header {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 0 100px;
-  padding-block: 5em;
-  text-align: center;
-}
-
-h1, h2, h3, h4, h5, h6 {
+h1, h2 {
   color: $primary;
-  line-height: calc(1em + #{rem(10px)});
+  line-height: calc(1em + 14px);
+  word-wrap: break-word;
 }
 
 h1 {
   font-size: clamp(#{rem(25px)}, 3vw, #{rem(60px)});
-}
-
-h2 {
-  margin-bottom: 2rem;
-  font-size: clamp(#{rem(20px)}, 3vw, #{rem(34px)});
-}
-
-.table-of-contents {
-  a {
-    color: $dark;
-    text-decoration: none;
-  }
-}
-
-p {
-  margin-bottom: $base-gap;
-  font-size: 1.25rem;
-  color: $dark;
-  line-height: calc(1em + 10px);
-}
-
-pre {
-  margin-bottom: 1rem;
-}
-
-pre code.hljs {
-  border-radius: $base-radius;
-  padding: 2rem !important;
-  background: $secondary !important;
-}
-
-.hljs {
-  font-family: "MonoLisa";
-}
-
-.btn {
-  background: none;
-  color: white;
-  padding: 1rem 2rem;
-  border-radius: $base-radius;
-  text-transform: uppercase;
-  font-weight: 700;
-  transition: $base-transition;
-  cursor: pointer;
-  margin-bottom: 1rem;
-  &.log {
-    border: 1px solid $success;
-    color: $success;
-    &:hover {
-      background: $success;
-    }
-
-    i {
-      padding-right: 6px;
-    }
-  }
-
-  &.clear {
-    border: 1px solid $alert;
-    color: $alert;
-    &:hover {
-      background: $alert;
-    }
-    margin-left: 1rem;
-
-    i {
-      padding-right: 6px;
-    }
-  }
-
-  &:hover {
+  margin-block-end: 2em;
+  &.h1 {
     color: $light;
   }
 }
 
-.language-html, .language-javascript {
-  position: relative;
+h2 {
+  margin-block-end: 1em;
+  font-size: clamp(#{rem(20px)}, 3vw, #{rem(34px)});
+  background: $light;
 }
 
-.language-html::before, .language-javascript::before {
-  position: absolute;
-  top: 0;
-  left: 2rem;
-  padding: .3rem 1rem;
-  border-radius: 0 0 $base-radius $base-radius;
-  color: #0d1117;
-  font-size: 12px;
-}
-
-.language-html::before {
-  content: "HTML";
-  background: $html;
-}
-
-.language-javascript::before {
-  content: "JS";
-  background: $javascript;
+p {
+  margin-bottom: rem($base-gap);
+  font-size: clamp(#{rem($base-font-size)}, 3vw, #{rem(20px)});
+  color: $dark;
+  line-height: calc(1em + 10px);
+  word-wrap: break-word;
 }
 
 .hr {
   width: 100%;
   height: 1px;
   background: $medium;
-  section & {
-    margin: 3rem 0;
+}
+
+header {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding-block: 5em;
+  background: linear-gradient(45deg, rgb(97, 0, 161), $primary, $html, $javascript);
+  color: $light;
+  width: 100%;
+
+  nav {
+    margin: 0 auto;
+    max-width: rem(1200px);
+  }
+
+  img {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(40%);
+  }
+  .table-of-contents {
+    list-style-position: inside;
+    li {
+      font-size: clamp(#{rem($base-font-size)}, 3vw, #{rem(30px)});
+      &:not(:first-child) {
+        margin-top: rem($base-gap);
+      }
+      a {
+        color: $light;
+      }
+    }
   }
 }
 
 section {
-  padding: 0 100px;
-  padding-block: 5em;
-  min-height: 100vh;
+  padding-block: 8em;
+  margin: 0 auto;
+  max-width: rem(1200px);
+}
+
+pre {
+  margin-bottom: rem($base-gap);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+  code.hljs.hljs {
+    background: $secondary;
+    border-radius: $base-radius;
+    font-family: "MonoLisa";
+    &.error.error {
+      background: lighten($alert, 50%);
+    }
+  }
+  .language-html, .language-javascript {
+    position: relative;
+  }
+  
+  .language-html::before, .language-javascript::before {
+    position: absolute;
+    top: 0;
+    padding: .3rem 1rem;
+    border-radius: 0 0 $base-radius $base-radius;
+    color: #0d1117;
+    font-size: 12px;
+  }
+  
+  .language-html::before {
+    content: "HTML";
+    background: $html;
+    color: $light;
+  }
+  
+  .language-javascript::before {
+    content: "JS";
+    background: $javascript;
+  }
+}
+
+.btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: rem($base-gap);
+  margin-bottom: 1rem;
+  .btn {
+    background: none;
+    padding: 1rem 2rem;
+    border-radius: $base-radius;
+    text-transform: uppercase;
+    font-weight: 700;
+    transition: $base-transition;
+    cursor: pointer;
+  
+    &.log {
+      border: 1px solid $success;
+      color: $success;
+      i {
+        padding-right: 6px;
+      }
+      &:hover {
+        background: $success;
+      }
+    }
+  
+    &.clear {
+      border: 1px solid $alert;
+      color: $alert;
+      i {
+        padding-right: 6px;
+      }
+      &:hover {
+        background: $alert;
+      }
+    }
+  
+    &:hover {
+      color: $light;
+    }
+  }
+}
+
+footer {
+  background: linear-gradient(45deg, rgb(97, 0, 161), $primary, $html, $javascript);
+  padding: rem(60px) rem(20px);
+  text-align: center;
+  color: $light;
+  font-size: rem($base-font-size);
+
+  > div {
+    max-width: rem(1000px);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  a {
+    display: block;
+    color: $light;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header, footer {
+    background-size: 175%;
+  }
+  section, nav {
+    padding-left: rem(20px);
+    padding-right: rem(20px);
+  }
+  pre code.hljs.hljs {
+    padding: 2rem 1rem 1rem;
+  }
+  .language-html::before, .language-javascript::before  {
+    left: 1rem;
+  }
+  section .hr {
+    margin: 1rem 0;
+  }
+}
+
+@media screen and (min-width: 481px) {
+  header, footer {
+    background-size: 150%;
+  }
+  section, nav {
+    padding-left: rem(35px);
+    padding-right: rem(35px);
+  }
+  pre code.hljs.hljs {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+  section .hr {
+    margin: 2rem 0;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  header, footer {
+    background-size: 125%;
+  }
+  section, nav {
+    padding-left: rem(50px);
+    padding-right: rem(50px);
+  }
+  .language-html::before, .language-javascript::before  {
+    left: 1.5rem;
+  }
+  section .hr {
+    margin: 2rem 0;
+  }
+}
+
+@media screen and (min-width: 978px) {
+  header, footer {
+    background-size: 100%;
+  }
+  section, nav {
+    padding-left: rem(75px);
+    padding-right: rem(75px);
+  }
+  pre code.hljs.hljs {
+    padding: 2rem;
+  }
+  section .hr {
+    margin: 4rem 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  section, nav {
+    padding-left: rem(100px);
+    padding-right: rem(100px);
+  }
+  .language-html::before, .language-javascript::before  {
+    left: 2rem;
+  }
+  section .hr {
+    margin: 6rem 0;
+  }
 }

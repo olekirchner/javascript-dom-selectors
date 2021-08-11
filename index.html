@@ -1,50 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JS DOM Selektoren</title>
-  <link rel="stylesheet" href="css/main.min.css">
 
+  <!-- favicon -->
   <link rel="shortcut icon" type="image/png" href="/favicon.png">
 
-   <!-- highlight js -->
-   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
-   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+  <!-- bootstrap icons  -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
-   <!-- bootstrap icons  -->
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <!-- styles  -->
+  <link rel="stylesheet" href="css/main.min.css">
+
+  <!-- highlight js -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/github.min.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
 </head>
 <body>
 
-  <main>
-    <header id="header">
-      <nav>
-        <h1>Die 5 wichtigsten DOM Javascript Selektoren im Überblick</h1>
-        <p>Table of contents:</p>
-        <ol class="table-of-contents">
-          <li><a href="#section1" title="Zur ersten Sektion">document.getElementById();</a></li>
-          <li><a href="#section2" title="Zur zweiten Sektion">document.getElementsByClassName();</a></li>
-          <li><a href="#section3" title="Zur dritten Sektion">document.getElementsByTagName();</a></li>
-          <li><a href="#section4" title="Zur vierten Sektion">document.querySelector();</a></li>
-          <li><a href="#section5" title="Zur fünften Sektion">document.querySelectorAll();</a></li>
-        </ol>
-      </nav>
-    </header>
+  <!-- header  -->
+  <header id="header">
+    <nav>
+      <h1 class="h1">Die 5 wichtigsten Javascript DOM Selektoren im Überblick</h1>
+      <ol class="table-of-contents">
+        <li><a href="#section1" title="Zur ersten Sektion">document.getElementById();</a></li>
+        <li><a href="#section2" title="Zur zweiten Sektion">document.getElementsByClassName();</a></li>
+        <li><a href="#section3" title="Zur dritten Sektion">document.getElementsByTagName();</a></li>
+        <li><a href="#section4" title="Zur vierten Sektion">document.querySelector();</a></li>
+        <li><a href="#section5" title="Zur fünften Sektion">document.querySelectorAll();</a></li>
+      </ol>
+    </nav>
+  </header>
 
+  <!-- content -->
+  <main>
     <!-- document.getElementById(); -->
     <section id="section1">
-      <h2>1. document.getElementById();</h2>
-      <p>Gibt ein Element anhand seiner ID zurück.</p>
-      <pre><code class="language-html">&lt;div id="triangle"&gt;Ich bin ein Dreieck&lt;/div&gt;</code></pre>
-      <pre><code class="language-javascript" id="copyTest">document.getElementById("triangle");</code></pre>
-      <button class="btn log" id="logById"><i class="bi bi-broadcast"></i>Log element</button>
-      <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <h2>1/5 – document.getElementById();</h2>
+      <p>Gibt ein Element anhand seiner <b>ID</b> zurück. Es wird dabei immer das erste Element ausgewählt. Da aber sowieso jede ID <b>einzigartig</b> sein sollte und das Dokument sonst nicht valide wäre, ist dieser Punkt eigentlich hinfällig.</p>
 
-      <pre id="log"></pre>
+<pre><code class="language-html">&lt;div id="triangle"&gt;Ich bin ein Dreieck&lt;/div&gt;</code></pre>
+<pre><code class="language-javascript" id="copyTest">const triangle = document.getElementById("triangle");</code></pre>
 
-      <!-- element which gets selected -->
+      <div class="btns">
+        <button class="btn log" id="logById"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
+
+      <!-- element(s) which will be selected -->
       <div id="triangle"></div>
     </section>
 
@@ -52,18 +58,24 @@
 
     <!-- document.getElementsByClassName(); -->
     <section id="section2">
-      <h2>2. document.getElementsByClassName()</h2>
-      <p>Gibt alle Elemente mit der angegebenen Klasse in Form eines Arrays (bzw. einer HTMLCollection) zurück.</p>
-      <pre><code class="language-html">&lt;div class="rectangle"&gt;Ich bin ein Rechteck&lt;/div&gt;
-&lt;div class="rectangle"&gt;Ich bin auch ein Rechteck&lt;/div&gt;
-&lt;div class="rectangle"&gt;Ich bin erst recht ein Rechteck&lt;/div&gt;</code></pre>
-<pre><code class="language-javascript">document.getElementsByClassName("rectangle");</code></pre>
-  <button class="btn log" id="logByClassName"><i class="bi bi-broadcast"></i>Log HTMLCollection</button>
-  <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <h2>2/5 – document.getElementsByClassName()</h2>
+      <p>Gibt alle Elemente mit der angegebenen <b>Klasse</b> in Form einer Liste (bzw. einer HTMLCollection) zurück. Eine HTMLCollection unterscheidet sich von einem Array dahingehend, welche <b>Methoden</b> auf ihr angewandt werden können und was sie genau <b>beeinhalten</b> kann.</p>
 
-  <div class="hr"></div>
+<pre><code class="language-html">&lt;div class="rectangle rectangle1"&gt;Ich bin ein Rechteck&lt;/div&gt;
+&lt;div class="rectangle rectangle2"&gt;Ich bin auch ein Rechteck&lt;/div&gt;
+&lt;div class="rectangle rectangle3"&gt;Ich bin erst recht ein Rechteck&lt;/div&gt;</code></pre>
+<pre><code class="language-javascript">const rectangle = document.getElementsByClassName("rectangle");</code></pre>
+  
+      <div class="btns">
+        <button class="btn log" id="logByClassName"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
 
-<pre><code class="language-javascript">const rectangles = document.getElementsByClassName("rectangle");
+      <div class="hr"></div>
+
+      <p>Man kann bei einer <b>HTMLCollection</b> leider nicht einfach einen EventListener hinzufügen, wie wir es bei einem Element machen würden, was wir mit document.getElementById(); bekommen. Das liegt einfach daran, das die HTMLCollection <b>mehrere Elemente</b> beeinhaltet und Javascript nicht weiß, bei welchem Element der EventListener hinzugefügt werden soll (bzw. es gibt keine Methode dafür / es ist so nicht vorgesehen). Wenn man dies dennoch versucht, wird in der Konsole ein <b>Fehler</b> geworfen.</p>
+
+<pre><code class="language-javascript error">const rectangles = document.getElementsByClassName("rectangle");
   
 rectangles.addEventListener("click", windowAlert)
 
@@ -71,96 +83,135 @@ function windowAlert() {
   alert("Hallo Welt")
 }</code></pre>
 
-<button class="btn log" id="logEventListenerError"><i class="bi bi-broadcast"></i>Log error</button>
-<button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <div class="btns">
+        <button class="btn log" id="logEventListenerError"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
 
-  <div class="hr"></div>
+      <div class="hr"></div>
   
+      <p>Um allen Elementen in einer HTMLCollection einen EventListener hinzuzufügen, muss man über jedes Element <b>iterieren</b> und sozusagen jedem Element <b>einzeln</b> einen EventListener geben.</p>
+
 <pre><code class="language-javascript">for (let i = 0; i < rectangles.length; i++;) {
   console.log(rectangles[i])
 
   rectangles[i].addEventListener("click", windowAlert);
 }</code></pre>
   
-  <button class="btn log" id="logByClassNameDisinct"><i class="bi bi-broadcast"></i>Log each element</button>
-  <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <div class="btns">
+        <button class="btn log" id="logByClassNameDisinct"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
   
-  <!-- elements which are getting selected -->
-        <div class="rectangle"></div>
-        <div class="rectangle"></div>
-        <div class="rectangle"></div>
+      <!-- element(s) which will be selected -->
+      <div class="rectangle rectangle1"></div>
+      <div class="rectangle rectangle2"></div>
+      <div class="rectangle rectangle3"></div>
     </section>
 
     <div class="hr"></div>
 
     <!-- document.getElementsByTagName(); -->
     <section id="section3">
-      <h2>3. document.getElementsByTagName()</h2>
-      <p>Gibt alle Elemente mit dem angegebenen TagName in Form eines Arrays (bzw. einer HTMLCollection) genau wie bei document.getElementsByClassName(); zurück.</p>
-      <pre><code class="language-html">&lt;pentagon&gt;&lt;/pentagon&gt;</code></pre>
-      <pre><code class="language-javascript">document.getElementsByTagName("pentagon");</code></pre>
-      <button class="btn log" id="logByTagName"><i class="bi bi-broadcast"></i>Log array (HTMLCollection)</button>
-      <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <h2>3/5 – document.getElementsByTagName()</h2>
+      <p>Gibt alle Elemente mit dem angegebenen <b>TagNamen</b> in Form einer <b>Liste</b> (bzw. wieder einer HTMLCollection) genau wie bei document.getElementsByClassName(); zurück. Auch was den Umgang mit EventListener angeht verweise ich hier auf <b>document.getElementsByClassName();</b></p>
+
+<pre><code class="language-html">&lt;pentagon class="pentagon1"&gt;&lt;/pentagon&gt;
+&lt;pentagon class="pentagon2"&gt;&lt;/pentagon&gt;
+&lt;pentagon class="pentagon3"&gt;&lt;/pentagon&gt;</code></pre>
+<pre><code class="language-javascript">const pentagons = document.getElementsByTagName("pentagon");</code></pre>
+
+      <div class="btns">
+        <button class="btn log" id="logByTagName"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
 
       <div class="hr"></div>
 
-      <p>Anstatt über alle Elemente im Array zu iterieren kann man auch einfach den Index des Elements im Array angeben. Dies ist aber nur zu empfehlen wenn es nur wenige Elemente mit dem entsprechenden TagName gibt.</p>
-      <pre><code class="language-javascript">document.getElementsByTagName("pentagon[0]");</code></pre>
-      <button class="btn log" id="logByTagNameDistinct"><i class="bi bi-broadcast"></i>Log distinct index</button>
-      <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <p>Anstatt über alle Elemente der Liste zu iterieren, kann man auch einfach den <b>Index</b> des Elements in der Liste angeben. Dies ist aber nur zu empfehlen wenn es nur <b>wenige Elemente</b> mit dem entsprechenden TagNamen gibt und man definitiv keine weiteren Elemente dieses Tags hinzufügt. Ein Beispiel dafür wäre der body. Das gleiche funktioniert auch so bei <b>document.getElementsByClassName();</b> und generell allem was eine Liste ausgibt.</p>
 
-      <!-- elements which is selected -->
-      <pentagon></pentagon>
+<pre><code class="language-javascript">const pentagon = document.getElementsByTagName("pentagon[0]");</code></pre>
+
+      <div class="btns">
+        <button class="btn log" id="logByTagNameDistinct"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
+
+      <!-- element(s) which will be selected -->
+      <pentagon class="pentagon1"></pentagon>
+      <pentagon class="pentagon2"></pentagon>
+      <pentagon class="pentagon3"></pentagon>
     </section>
 
     <div class="hr"></div>
 
     <!-- document.querySelector(); -->
     <section id="section4">
-      <h2>4. document.querySelector()</h2>
-      <p>Hiermit kann man sowohl eine Klasse, eine ID, als auch einen Tag greifen. Hierbei ist zu beachten dass man demnach natürlich 
-      <pre><code class="language-html">&lt;div class="hexagon"&gt;Ich bin ein Hexagon&lt;/div&gt;</code></pre>
-      <pre><code class="language-javascript">document.querySelector(".hexagon");</code></pre>
-      <button class="btn log" id="logQuerySelectorClass"><i class="bi bi-broadcast"></i>Log first element by class</button>
-      <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <h2>4/5 – document.querySelector()</h2>
+      <p>Hiermit kann man sowohl eine <b>Klasse</b>, eine <b>ID</b>, als auch einen <b>Tag</b> greifen. Hierbei ist zu beachten dass man demnach natürlich bei einer Klasse den <b>Punkt</b> und einer ID die <b>Raute</b> beachten und mit angeben muss.</p>
+      <p><b>Beispiel mit einer Klasse:</b></p>
+
+<pre><code class="language-html">&lt;div class="hexagon"&gt;Ich bin ein Hexagon&lt;/div&gt;</code></pre>
+<pre><code class="language-javascript">const hexagon = document.querySelector(".hexagon");</code></pre>
+
+      <div class="btns">
+        <button class="btn log" id="logQuerySelectorClass"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
 
       <div class="hr"></div>
 
-      <pre><code class="language-html">&lt;div id="hexagon"&gt;Ich bin auch ein Hexagon&lt;/div&gt;</code></pre>
-      <pre><code class="language-javascript">document.querySelector("#hexagon");</code></pre>
-      <button class="btn log" id="logQuerySelectorId"><i class="bi bi-broadcast"></i>Log one element by ID</button>
-      <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <p><b>Beispiel mit einer ID:</b></p>
+
+<pre><code class="language-html">&lt;div id="hexagon"&gt;Ich bin auch ein Hexagon&lt;/div&gt;</code></pre>
+<pre><code class="language-javascript">const hexagon = document.querySelector("#hexagon");</code></pre>
+
+      <div class="btns">
+        <button class="btn log" id="logQuerySelectorId"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
 
       <div class="hr"></div>
 
-      <pre><code class="language-html">&lt;hexagon&gt;Ich bin Hexagon Nummer 3&lt;/hexagon&gt;</code></pre>
-      <pre><code class="language-javascript">document.querySelector("hexagon");</code></pre>
-      <button class="btn log" id="logQuerySelectorTagName"><i class="bi bi-broadcast"></i>Log first element by tag </button>
-      <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <p><b>Beispiel mit einem Tag:</b></p>
+
+<pre><code class="language-html">&lt;hexagon&gt;Ich bin ebenso ein Hexagon&lt;/hexagon&gt;</code></pre>
+<pre><code class="language-javascript">const hexagon = document.querySelector("hexagon");</code></pre>
+
+      <div class="btns">
+        <button class="btn log" id="logQuerySelectorTagName"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
 
       <div class="hr"></div>
 
+      <p>Eine weitere <b>besondere</b> Eigenschaft am document.querySelector(); ist, dass man ähnlich wie in CSS <b>verschachtelte Elemente</b> anwählen kann. Die Schreibweise folgt dabei den <b>selben Regeln</b>.</p>
 
-
-
-      <pre><code class="language-html">&lt;div class="container"&gt;
+<pre><code class="language-html">&lt;div class="container"&gt;
   &lt;div class="circle"&gt;&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-      <pre><code class="language-javascript">document.querySelector(".container .circle");</code></pre>
-      <button class="btn log" id="logQuerySelectorNested"><i class="bi bi-broadcast"></i>Log first element by class inside another element</button>
-      <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+<pre><code class="language-javascript">const circle = document.querySelector(".container .circle");</code></pre>
+
+      <div class="btns">
+        <button class="btn log" id="logQuerySelectorNested"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
 
       <div class="hr"></div>
+
+      <p>Man kann außerdem in einem ausgewählten Element nach weiteren Elementen suchen. In diesem Beispiel wird die Klasse ".circle" nicht im document, sondern innerhalb des <b>zuvor gegriffenen containers</b> gesucht. Dadurch kann man ebenfalls <b>spezifischer</b> suchen und verkürzt auch die Zeit zum <b>parsen</b> der Seite.</p>
 
 <pre><code class="language-javascript">const container = document.querySelector(".container");
 
-container.querySelector(".circle");
-</code></pre>
-            <button class="btn log" id="logQuerySelectorNestedVers2"><i class="bi bi-broadcast"></i>Log first element by class inside another element</button>
-            <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+container.querySelector(".circle");</code></pre>
+
+      <div class="btns">
+        <button class="btn log" id="logQuerySelectorNestedVers2"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
 
 
-      <!-- element which is logged  -->
+      <!-- element(s) which will be selected -->
       <div class="hexagon"></div>
       <div id="hexagon"></div>
       <hexagon></hexagon>
@@ -174,30 +225,35 @@ container.querySelector(".circle");
 
     <!-- document.querySelectorAll(); -->
     <section id="section5">
-      <h2>5. document.querySelectorAll()</h2>
-      <pre><code class="language-html">&lt;septagon&gt;Ich bin ein Septagon 1&lt;/septagon&gt;
-&lt;septagon&gt;Ich bin ein Septagon 1&lt;/septagon&gt;
-&lt;septagon&gt;Ich bin ein Septagon 1&lt;/septagon&gt;</code></pre>
-      <pre><code class="language-javascript">document.querySelectorAll("septagon");</code></pre>
-      <button class="btn log" id="logQuerySelectorAllTagNames"><i class="bi bi-broadcast"></i>Log NodeList</button>
-      <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      <h2>5/5 – document.querySelectorAll()</h2>
+      <p>Gibt wieder alle Elemente einer <b>Klasse</b>, <b>ID</b> (soll trotzdem einzigartig sein) oder eines <b>Tags</b> und gibt wieder eine Liste (bzw. hier sogar NodeList) aus. Die Besonderheiten sind sonst die selben wie bei dem zuvor beschriebenen document.querySelector();</p>
 
-      <!-- elements which get selected -->
-      <septagon></septagon>
-      <septagon></septagon>
-      <septagon></septagon>
-    </section>
+<pre><code class="language-html">&lt;septagon&gt;Ich bin ein Septagon&lt;/septagon&gt;
+&lt;septagon&gt;Ich bin auch ein Septagon&lt;/septagon&gt;
+&lt;septagon&gt;Ich bin ebenfalls ein Septagon&lt;/septagon&gt;</code></pre>
+<pre><code class="language-javascript">document.querySelectorAll("septagon");</code></pre>
 
-    <section>
-      <h2>Nice to know:</h2>
-      <ul>
-        <li>kgk</li>
-      </ul>
+      <div class="btns">
+        <button class="btn log" id="logQuerySelectorAllTagNames"><i class="bi bi-broadcast"></i>Console Log</button>
+        <button class="btn clear"><i class="bi bi-x-circle"></i>Clear Console</button>
+      </div>
+
+      <!-- element(s) which will be selected -->
+      <septagon></septagon>
+      <septagon></septagon>
+      <septagon></septagon>
     </section>
   </main>
 
-  <!-- <a class="back-to-top" title="Back to the top"></a> -->
+  <!-- footer  -->
+  <footer>
+    <div>
+      <div>©2021 Ole Kirchner</div>
+      <a href="#header" title="Zurück nach oben">zurück nach oben<i class="bi bi-arrow-up"></i></a>
+    </div>
+  </footer>
 
+  <!-- scripts  -->
   <script>hljs.highlightAll();</script>
   <script src="js/script.js"></script>
 </body>
