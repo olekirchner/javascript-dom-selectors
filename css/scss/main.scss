@@ -22,12 +22,17 @@ $medium: hsl(0, 0%, 60%);
 $html: #e34c26;
 $javascript: #F0DB4F;
 
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   margin: 0;
   padding: 0;
   border: 0;
   box-sizing: border-box;
 }
+
 body {
   font-family: "Arial", sans-serif;
 }
@@ -36,6 +41,9 @@ header {
   min-height: 100vh;
   display: flex;
   align-items: center;
+  padding: 0 100px;
+  padding-block: 5em;
+  text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -91,7 +99,7 @@ pre code.hljs {
   cursor: pointer;
   margin-bottom: 1rem;
   &.log {
-    border: 2px solid $success;
+    border: 1px solid $success;
     color: $success;
     &:hover {
       background: $success;
@@ -103,7 +111,7 @@ pre code.hljs {
   }
 
   &.clear {
-    border: 2px solid $alert;
+    border: 1px solid $alert;
     color: $alert;
     &:hover {
       background: $alert;
@@ -146,12 +154,10 @@ pre code.hljs {
 
 .hr {
   width: 100%;
-  background: $primary;
-  height: 2px;
+  height: 1px;
+  background: $medium;
   section & {
-    background: $medium;
     margin: 3rem 0;
-    height: 1px;
   }
 }
 

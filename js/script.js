@@ -64,6 +64,14 @@ logQuerySelectorNested.addEventListener("click", function() {
   console.log(logQuerySelectorNestedEl)
 })
 
+// document.querySelector(); (selecting an element by it's class inside another version 2)
+const logQuerySelectorNestedVers2 = document.getElementById("logQuerySelectorNestedVers2")
+logQuerySelectorNestedVers2.addEventListener("click", function() {
+  const logQuerySelectorNestedVers2FirstEl = document.querySelector(".container")
+  const logQuerySelectorNestedVers2SecondEl = logQuerySelectorNestedVers2FirstEl.querySelector(".circle"); 
+  console.log(logQuerySelectorNestedVers2SecondEl)
+})
+
 // document.querySelectorAll(); (selecting multiple tags)
 const logQuerySelectorAllTagNames = document.getElementById("logQuerySelectorAllTagNames")
 logQuerySelectorAllTagNames.addEventListener("click", function() {
@@ -71,14 +79,25 @@ logQuerySelectorAllTagNames.addEventListener("click", function() {
   console.log(logQuerySelectorAllTagNamesEl)
 })
 
+// document.querySelectorAll(); (adding eventlistener error)
+const logEventListenerError = document.getElementById("logEventListenerError")
+logEventListenerError.addEventListener("click", function() {
+  const logEventListenerErrorEl = document.querySelectorAll("septagon")
+  logEventListenerErrorEl.addEventListener("click", windowAlert)
+})
+
+function windowAlert() {
+  alert("Hallo Welt");
+};
+
 // clear console buttons
-const clearConsoleBtns = document.getElementsByClassName("clear")
+const clearConsoleBtns = document.getElementsByClassName("clear");
 
 for (let i = 0; i < clearConsoleBtns.length; i++) {
   clearConsoleBtns[i].addEventListener("click", () => {
     console.clear()
-  })
-}
+  });
+};
 
 
 
@@ -95,16 +114,16 @@ for (let i = 0; i < clearConsoleBtns.length; i++) {
 // }
 
 
-(function () {
-  var old = console.log;
-  var logger = document.getElementById('log');
-  console.log = function () {
-    for (var i = 0; i < arguments.length; i++) {
-      if (typeof arguments[i] == 'object') {
-          logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
-      } else {
-          logger.innerHTML += arguments[i] + '<br />';
-      }
-    }
-  }
-})();
+// (function () {
+//   var old = console.log;
+//   var logger = document.getElementById('log');
+//   console.log = function () {
+//     for (var i = 0; i < arguments.length; i++) {
+//       if (typeof arguments[i] == 'object') {
+//           logger.innerHTML += (JSON && JSON.stringify ? JSON.stringify(arguments[i], undefined, 2) : arguments[i]) + '<br />';
+//       } else {
+//           logger.innerHTML += arguments[i] + '<br />';
+//       }
+//     }
+//   }
+// })();
