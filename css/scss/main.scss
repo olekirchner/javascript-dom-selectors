@@ -1,0 +1,162 @@
+$base-font-size: 16px;
+@function rem($to-size, $from-size: $base-font-size) {
+	@if $to-size == 0px {
+		@return 0;
+	}
+	@return $to-size / $from-size * 1rem;
+}
+
+$base-radius: 6px;
+$base-transition: .3s;
+$alert: hsl(4, 85%, 42%);
+$success: hsl(125, 83%, 37%);
+$light: hsl(0, 0%, 100%);
+$base-gap: 1rem;
+
+$dark: hsl(0, 0%, 10%);
+
+$primary: hsl(225, 100%, 50%);
+$secondary: hsl(0, 0%, 94%);
+$medium: hsl(0, 0%, 60%);
+
+$html: #e34c26;
+$javascript: #F0DB4F;
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Arial", sans-serif;
+}
+
+header {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $primary;
+  line-height: calc(1em + #{rem(10px)});
+}
+
+h1 {
+  font-size: clamp(#{rem(25px)}, 3vw, #{rem(60px)});
+}
+
+h2 {
+  margin-bottom: 2rem;
+  font-size: clamp(#{rem(20px)}, 3vw, #{rem(34px)});
+}
+
+.table-of-contents {
+  a {
+    color: $dark;
+    text-decoration: none;
+  }
+}
+
+p {
+  margin-bottom: $base-gap;
+  font-size: 1.25rem;
+  color: $dark;
+  line-height: calc(1em + 10px);
+}
+
+pre {
+  margin-bottom: 1rem;
+}
+
+pre code.hljs {
+  border-radius: $base-radius;
+  padding: 2rem !important;
+  background: $secondary !important;
+}
+
+.hljs {
+  font-family: "MonoLisa";
+}
+
+.btn {
+  background: none;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: $base-radius;
+  text-transform: uppercase;
+  font-weight: 700;
+  transition: $base-transition;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  &.log {
+    border: 2px solid $success;
+    color: $success;
+    &:hover {
+      background: $success;
+    }
+
+    i {
+      padding-right: 6px;
+    }
+  }
+
+  &.clear {
+    border: 2px solid $alert;
+    color: $alert;
+    &:hover {
+      background: $alert;
+    }
+    margin-left: 1rem;
+
+    i {
+      padding-right: 6px;
+    }
+  }
+
+  &:hover {
+    color: $light;
+  }
+}
+
+.language-html, .language-javascript {
+  position: relative;
+}
+
+.language-html::before, .language-javascript::before {
+  position: absolute;
+  top: 0;
+  left: 2rem;
+  padding: .3rem 1rem;
+  border-radius: 0 0 $base-radius $base-radius;
+  color: #0d1117;
+  font-size: 12px;
+}
+
+.language-html::before {
+  content: "HTML";
+  background: $html;
+}
+
+.language-javascript::before {
+  content: "JS";
+  background: $javascript;
+}
+
+.hr {
+  width: 100%;
+  background: $primary;
+  height: 2px;
+  section & {
+    background: $medium;
+    margin: 3rem 0;
+    height: 1px;
+  }
+}
+
+section {
+  padding: 0 100px;
+  padding-block: 5em;
+  min-height: 100vh;
+}
