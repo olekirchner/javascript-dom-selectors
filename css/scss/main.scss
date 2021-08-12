@@ -54,13 +54,12 @@ body {
 
 h1, h2 {
   color: $primary;
-  line-height: calc(1em + 14px);
+  line-height: calc(1em + 12px);
   word-wrap: break-word;
 }
 
 h1 {
-  font-size: clamp(#{rem(25px)}, 3vw, #{rem(60px)});
-  margin-block-end: 2em;
+  font-size: clamp(#{rem(25px)}, 4vw, #{rem(60px)});
   &.h1 {
     color: $light;
   }
@@ -69,12 +68,15 @@ h1 {
 h2 {
   margin-block-end: 1em;
   font-size: clamp(#{rem(20px)}, 3vw, #{rem(34px)});
-  background: $light;
+  background-image: linear-gradient(to right, $primary, rgb(97, 0, 161), $html, $javascript);
+  -webkit-background-clip: text;
+  color: transparent;
+  display: inline-block;
 }
 
 p {
   margin-bottom: rem($base-gap);
-  font-size: clamp(#{rem($base-font-size)}, 3vw, #{rem(20px)});
+  font-size: clamp(#{rem($base-font-size)}, 2vw, #{rem(20px)});
   color: $dark;
   line-height: calc(1em + 10px);
   word-wrap: break-word;
@@ -87,12 +89,11 @@ p {
 }
 
 header {
+  background: linear-gradient(45deg, $primary, rgb(97, 0, 161), $html, $javascript);
   position: relative;
-  min-height: 80vh;
   display: flex;
   align-items: center;
   padding-block: 5em;
-  background: linear-gradient(45deg, rgb(97, 0, 161), $primary, $html, $javascript);
   color: $light;
   width: 100%;
 
@@ -116,7 +117,11 @@ header {
     li {
       font-size: clamp(#{rem($base-font-size)}, 3vw, #{rem(30px)});
       &:not(:first-child) {
-        margin-top: rem($base-gap);
+        margin-top: .75em;
+      }
+      &:last-child {
+        margin-top: 1.5em;
+        list-style: none;
       }
       a {
         color: $light;
@@ -126,7 +131,6 @@ header {
 }
 
 section {
-  padding-block: 8em;
   margin: 0 auto;
   max-width: rem(1200px);
 }
@@ -142,6 +146,7 @@ pre {
   code.hljs.hljs {
     background: $secondary;
     border-radius: $base-radius;
+    font-size: clamp(#{rem(14px)}, 2vw, #{rem($base-font-size)});
     font-family: "MonoLisa";
     &.error.error {
       background: lighten($alert, 50%);
@@ -215,17 +220,22 @@ pre {
 }
 
 footer {
-  background: linear-gradient(45deg, rgb(97, 0, 161), $primary, $html, $javascript);
-  padding: rem(60px) rem(20px);
+  background: linear-gradient(45deg, $primary, rgb(97, 0, 161), $html, $javascript);
+  min-height: 20vh;
   text-align: center;
   color: $light;
   font-size: rem($base-font-size);
+  display: flex;
+  align-items: center;
 
   > div {
-    max-width: rem(1000px);
     margin: 0 auto;
+    width: 100%;
+    max-width: rem(1000px);
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: rem($base-gap);
   }
 
   a {
@@ -242,9 +252,15 @@ footer {
   header, footer {
     background-size: 175%;
   }
-  section, nav {
+  section {
+    padding-block: 4em;
+  }
+  section, nav, footer {
     padding-left: rem(20px);
     padding-right: rem(20px);
+  }
+  h1 {
+    margin-block-end: 1em;
   }
   pre code.hljs.hljs {
     padding: 2rem 1rem 1rem;
@@ -253,47 +269,71 @@ footer {
     left: 1rem;
   }
   section .hr {
-    margin: 1rem 0;
+    margin: 3rem 0;
   }
 }
 
 @media screen and (min-width: 481px) {
+  section {
+    padding-block: 3.5em;
+  }
+  header {
+    min-height: 40vh;
+  }
   header, footer {
     background-size: 150%;
   }
-  section, nav {
+  section, nav, footer {
     padding-left: rem(35px);
     padding-right: rem(35px);
+  }
+  h1 {
+    margin-block-end: 1.25em;
   }
   pre code.hljs.hljs {
     padding: 2rem 1.5rem 1.5rem;
   }
   section .hr {
-    margin: 2rem 0;
+    margin: 3.5rem 0;
   }
 }
 
 @media screen and (min-width: 768px) {
+  header {
+    min-height: 50vh;
+  }
   header, footer {
     background-size: 125%;
   }
-  section, nav {
+  section {
+    padding-block: 6em;
+  }
+  section, nav, footer {
     padding-left: rem(50px);
     padding-right: rem(50px);
+  }
+  h1 {
+    margin-block-end: 1.5em;
   }
   .language-html::before, .language-javascript::before  {
     left: 1.5rem;
   }
   section .hr {
-    margin: 2rem 0;
+    margin: 4rem 0;
   }
 }
 
 @media screen and (min-width: 978px) {
+  header {
+    min-height: 65vh;
+  }
+  h1 {
+    margin-block-end: 1.6em;
+  }
   header, footer {
     background-size: 100%;
   }
-  section, nav {
+  section, nav, footer {
     padding-left: rem(75px);
     padding-right: rem(75px);
   }
@@ -301,14 +341,23 @@ footer {
     padding: 2rem;
   }
   section .hr {
-    margin: 4rem 0;
+    margin: 5rem 0;
   }
 }
 
 @media screen and (min-width: 1200px) {
-  section, nav {
+  header {
+    min-height: 80vh;
+  }
+  section {
+    padding-block: 8em;
+  }
+  section, nav, footer {
     padding-left: rem(100px);
     padding-right: rem(100px);
+  }
+  h1 {
+    margin-block-end: 2em;
   }
   .language-html::before, .language-javascript::before  {
     left: 2rem;

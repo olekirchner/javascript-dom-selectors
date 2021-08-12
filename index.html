@@ -26,11 +26,12 @@
     <nav>
       <h1 class="h1">Die 5 wichtigsten Javascript DOM Selektoren im Überblick</h1>
       <ol class="table-of-contents">
-        <li><a href="#section1" title="Zur ersten Sektion">document.getElementById();</a></li>
-        <li><a href="#section2" title="Zur zweiten Sektion">document.getElementsByClassName();</a></li>
-        <li><a href="#section3" title="Zur dritten Sektion">document.getElementsByTagName();</a></li>
-        <li><a href="#section4" title="Zur vierten Sektion">document.querySelector();</a></li>
-        <li><a href="#section5" title="Zur fünften Sektion">document.querySelectorAll();</a></li>
+        <li><a href="#section1" title="Zur ersten Sektion">document.&shy;getElement&shy;ById();</a></li>
+        <li><a href="#section2" title="Zur zweiten Sektion">document.&shy;getElements&shy;ByClassName();</a></li>
+        <li><a href="#section3" title="Zur dritten Sektion">document.&shy;getElements&shy;ByTagName();</a></li>
+        <li><a href="#section4" title="Zur vierten Sektion">document.&shy;querySelector();</a></li>
+        <li><a href="#section5" title="Zur fünften Sektion">document.&shy;querySelector&shy;All();</a></li>
+        <li><a href="#section6" title="Zur letzten Sektion">Wann benutzt man welchen Selektor?</a></li>
       </ol>
     </nav>
   </header>
@@ -39,8 +40,8 @@
   <main>
     <!-- document.getElementById(); -->
     <section id="section1">
-      <h2>1/5 – document.getElementById();</h2>
-      <p>Gibt ein Element anhand seiner <b>ID</b> zurück. Es wird dabei immer das erste Element ausgewählt. Da aber sowieso jede ID <b>einzigartig</b> sein sollte und das Dokument sonst nicht valide wäre, ist dieser Punkt eigentlich hinfällig.</p>
+      <h2>1/5 – document.&shy;getElement&shy;ById();</h2>
+      <p>Gibt ein Element anhand seiner <b>ID</b> zurück. Es wird dabei immer das erste Element ausgewählt. Da aber sowieso jede ID <b>einzigartig</b> sein sollte und das Dokument sonst nicht valide wäre, ist dieser Hinweis eigentlich hinfällig.</p>
 
 <pre><code class="language-html">&lt;div id="triangle"&gt;Ich bin ein Dreieck&lt;/div&gt;</code></pre>
 <pre><code class="language-javascript" id="copyTest">const triangle = document.getElementById("triangle");</code></pre>
@@ -58,13 +59,13 @@
 
     <!-- document.getElementsByClassName(); -->
     <section id="section2">
-      <h2>2/5 – document.getElementsByClassName()</h2>
+      <h2>2/5 – document.&shy;getElements&shy;ByClassName();</h2>
       <p>Gibt alle Elemente mit der angegebenen <b>Klasse</b> in Form einer Liste (bzw. einer HTMLCollection) zurück. Eine HTMLCollection unterscheidet sich von einem Array dahingehend, welche <b>Methoden</b> auf ihr angewandt werden können und was sie genau <b>beeinhalten</b> kann.</p>
 
 <pre><code class="language-html">&lt;div class="rectangle rectangle1"&gt;Ich bin ein Rechteck&lt;/div&gt;
 &lt;div class="rectangle rectangle2"&gt;Ich bin auch ein Rechteck&lt;/div&gt;
 &lt;div class="rectangle rectangle3"&gt;Ich bin erst recht ein Rechteck&lt;/div&gt;</code></pre>
-<pre><code class="language-javascript">const rectangle = document.getElementsByClassName("rectangle");</code></pre>
+<pre><code class="language-javascript">const rectangles = document.getElementsByClassName("rectangle");</code></pre>
   
       <div class="btns">
         <button class="btn log" id="logByClassName"><i class="bi bi-broadcast"></i>Console Log</button>
@@ -113,7 +114,7 @@ function windowAlert() {
 
     <!-- document.getElementsByTagName(); -->
     <section id="section3">
-      <h2>3/5 – document.getElementsByTagName()</h2>
+      <h2>3/5 – document.&shy;getElements&shy;ByTagName();</h2>
       <p>Gibt alle Elemente mit dem angegebenen <b>TagNamen</b> in Form einer <b>Liste</b> (bzw. wieder einer HTMLCollection) genau wie bei document.getElementsByClassName(); zurück. Auch was den Umgang mit EventListener angeht verweise ich hier auf <b>document.getElementsByClassName();</b></p>
 
 <pre><code class="language-html">&lt;pentagon class="pentagon1"&gt;&lt;/pentagon&gt;
@@ -147,7 +148,7 @@ function windowAlert() {
 
     <!-- document.querySelector(); -->
     <section id="section4">
-      <h2>4/5 – document.querySelector()</h2>
+      <h2>4/5 – document.&shy;querySelector();</h2>
       <p>Hiermit kann man sowohl eine <b>Klasse</b>, eine <b>ID</b>, als auch einen <b>Tag</b> greifen. Hierbei ist zu beachten dass man demnach natürlich bei einer Klasse den <b>Punkt</b> und einer ID die <b>Raute</b> beachten und mit angeben muss.</p>
       <p><b>Beispiel mit einer Klasse:</b></p>
 
@@ -225,8 +226,8 @@ container.querySelector(".circle");</code></pre>
 
     <!-- document.querySelectorAll(); -->
     <section id="section5">
-      <h2>5/5 – document.querySelectorAll()</h2>
-      <p>Gibt wieder alle Elemente einer <b>Klasse</b>, <b>ID</b> (soll trotzdem einzigartig sein) oder eines <b>Tags</b> und gibt wieder eine Liste (bzw. hier sogar NodeList) aus. Die Besonderheiten sind sonst die selben wie bei dem zuvor beschriebenen document.querySelector();</p>
+      <h2>5/5 – document.&shy;querySelector&shy;All();</h2>
+      <p>Gibt wieder alle Elemente einer <b>Klasse</b>, <b>ID</b> (soll trotzdem einzigartig sein) oder eines <b>Tags</b> und gibt wieder eine Liste (bzw. hier sogar NodeList) aus. Die Besonderheiten sind sonst die selben wie bei dem zuvor beschriebenen <b>document.querySelector();</b></p>
 
 <pre><code class="language-html">&lt;septagon&gt;Ich bin ein Septagon&lt;/septagon&gt;
 &lt;septagon&gt;Ich bin auch ein Septagon&lt;/septagon&gt;
@@ -243,12 +244,21 @@ container.querySelector(".circle");</code></pre>
       <septagon></septagon>
       <septagon></septagon>
     </section>
+
+    <div class="hr"></div>
+
+    <!-- when to use which selector -->
+    <section id="section6">
+      <h2>Wann benutzt man welchen Selektor?</h2>
+      <p>Es gibt wie bei vielen Dingen <b>keine</b> genaue Angabe was man wann, wo oder wie benutzen soll. Das wichtigste ist immer, das es <b>funktioniert</b>.</p><p> Bei den DOM Selektoren ist es aber gut, den direktesten Weg zu nehmen ein Element in Javascript zu holen. Also bei einer ID halt einfach <b>document.getElementById();</b> nehmen und bei Tags <b>document.getElementsByTagName();</b>. Dies bietet eine bessere Lesbarkeit und Verständlichkeit des Codes, als wenn man nur den <b>querySelector</b> für alles benutzt. Zudem ist der querySelector am <b>rechenintensivsten</b>, da der übergebene String erst geparsed werden muss. Dies ist zwar meist zu vernachlässigen, aber dennoch sollte man ihn <b>Best Practice</b> nur dann verwenden, wenn man Elemente mit komplexeren Regeln selektieren möchte.</p>
+      <p>Es gibt noch weitere sehr <b>technische</b> Unterschiede, weshalb etwas seltenen Fällen nicht so funktioniert wie es soll und weshalb man dann einen anderen Selektor für diesen Fall benutzen sollte. Alles zu benennen wäre für diese <b>Dokumentation</b> jetzt aber zu viel gewesen.</p>
+    </section>
   </main>
 
   <!-- footer  -->
   <footer>
     <div>
-      <div>©2021 Ole Kirchner</div>
+      <div>©2021 Ole Kirchner & Julia Nguyen</div>
       <a href="#header" title="Zurück nach oben">zurück nach oben<i class="bi bi-arrow-up"></i></a>
     </div>
   </footer>
