@@ -1,3 +1,5 @@
+<!-- Julia Nguyen und Ole Kirchner  -->
+<!-- https://javascript-dom-selectors.netlify.app -->
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -74,7 +76,7 @@
 
       <div class="hr"></div>
 
-      <p>Man kann bei einer <b>HTMLCollection</b> leider nicht einfach einen EventListener hinzufügen, wie wir es bei einem Element machen würden, was wir mit document.getElementById(); bekommen. Das liegt einfach daran, das die HTMLCollection <b>mehrere Elemente</b> beeinhaltet und Javascript nicht weiß, bei welchem Element der EventListener hinzugefügt werden soll (bzw. es gibt keine Methode dafür / es ist so nicht vorgesehen). Wenn man dies dennoch versucht, wird in der Konsole ein <b>Fehler</b> geworfen.</p>
+      <p>Man kann bei einer <b>HTMLCollection</b> leider nicht einfach einen EventListener hinzufügen, wie wir es bei einem Element machen würden, was wir mit document.&shy;getElement&shy;ById(); bekommen. Das liegt einfach daran, das die HTMLCollection <b>mehrere Elemente</b> beeinhaltet und Javascript nicht weiß, bei welchem Element der EventListener hinzugefügt werden soll (bzw. es gibt keine Methode dafür / es ist so nicht vorgesehen). Wenn man dies dennoch versucht, wird in der Konsole ein <b>Fehler</b> geworfen.</p>
 
 <pre><code class="language-javascript error">const rectangles = document.getElementsByClassName("rectangle");
   
@@ -115,7 +117,7 @@ function windowAlert() {
     <!-- document.getElementsByTagName(); -->
     <section id="section3">
       <h2>3/5 – document.&shy;getElements&shy;ByTagName();</h2>
-      <p>Gibt alle Elemente mit dem angegebenen <b>TagNamen</b> in Form einer <b>Liste</b> (bzw. wieder einer HTMLCollection) genau wie bei document.getElementsByClassName(); zurück. Auch was den Umgang mit EventListener angeht verweise ich hier auf <b>document.getElementsByClassName();</b></p>
+      <p>Gibt alle Elemente mit dem angegebenen <b>TagNamen</b> in Form einer <b>Liste</b> (bzw. wieder einer HTMLCollection) genau wie bei document.&shy;getElements&shy;ByClassName(); zurück. Auch was den Umgang mit EventListener angeht verweise ich hier auf <b>document.&shy;getElementsBy&shy;ClassName();</b></p>
 
 <pre><code class="language-html">&lt;pentagon class="pentagon1"&gt;&lt;/pentagon&gt;
 &lt;pentagon class="pentagon2"&gt;&lt;/pentagon&gt;
@@ -129,9 +131,13 @@ function windowAlert() {
 
       <div class="hr"></div>
 
-      <p>Anstatt über alle Elemente der Liste zu iterieren, kann man auch einfach den <b>Index</b> des Elements in der Liste angeben. Dies ist aber nur zu empfehlen wenn es nur <b>wenige Elemente</b> mit dem entsprechenden TagNamen gibt und man definitiv keine weiteren Elemente dieses Tags hinzufügt. Ein Beispiel dafür wäre der body. Das gleiche funktioniert auch so bei <b>document.getElementsByClassName();</b> und generell allem was eine Liste ausgibt.</p>
+      <p>Anstatt über alle Elemente der Liste zu iterieren, kann man auch einfach den <b>Index</b> des Elements in der Liste angeben, um es zu selektieren. Dies ist aber nur zu empfehlen wenn es nur <b>wenige Elemente</b> mit dem entsprechenden TagNamen gibt und man definitiv keine weiteren Elemente dieses Tags hinzufügt. Ein Beispiel dafür wäre der body. Das gleiche funktioniert auch genau so bei <b>document.&shy;getElements&shy;ByClassName();</b> und generell allem was eine Liste ausgibt.</p>
 
-<pre><code class="language-javascript">const pentagon = document.getElementsByTagName("pentagon[0]");</code></pre>
+<pre><code class="language-javascript">const pentagon = document.getElementsByTagName("pentagon");
+
+console.log(pentagon[0]);
+pentagon[0].addEventListener("click", windowAlert);
+</code></pre>
 
       <div class="btns">
         <button class="btn log" id="logByTagNameDistinct"><i class="bi bi-broadcast"></i>Console Log</button>
@@ -186,7 +192,7 @@ function windowAlert() {
 
       <div class="hr"></div>
 
-      <p>Eine weitere <b>besondere</b> Eigenschaft am document.querySelector(); ist, dass man ähnlich wie in CSS <b>verschachtelte Elemente</b> anwählen kann. Die Schreibweise folgt dabei den <b>selben Regeln</b>.</p>
+      <p>Eine weitere <b>besondere</b> Eigenschaft am document.&shy;querySelector(); ist, dass man ähnlich wie in CSS <b>verschachtelte Elemente</b> anwählen kann. Die Schreibweise folgt dabei den <b>selben Regeln</b>.</p>
 
 <pre><code class="language-html">&lt;div class="container"&gt;
   &lt;div class="circle"&gt;&lt;/div&gt;
@@ -227,7 +233,7 @@ container.querySelector(".circle");</code></pre>
     <!-- document.querySelectorAll(); -->
     <section id="section5">
       <h2>5/5 – document.&shy;querySelector&shy;All();</h2>
-      <p>Es selektiert alle Elemente mit einer gegebenen <b>Klasse</b>, einer <b>ID</b> (soll trotzdem einzigartig sein) oder eines <b>Tags</b> und gibt diese als eine Liste (bzw. hier sogar NodeList) aus. Die Besonderheiten sind sonst die selben wie bei dem zuvor beschriebenen <b>document.querySelector();</b></p>
+      <p>Es selektiert alle Elemente mit einer gegebenen <b>Klasse</b>, einer <b>ID</b> (soll trotzdem einzigartig sein) oder eines <b>Tags</b> und gibt diese als eine Liste (bzw. hier sogar NodeList) aus. Die Besonderheiten sind sonst die selben wie bei dem zuvor beschriebenen <b>document.&shy;querySelector();</b></p>
 
 <pre><code class="language-html">&lt;septagon&gt;Ich bin ein Septagon&lt;/septagon&gt;
 &lt;septagon&gt;Ich bin auch ein Septagon&lt;/septagon&gt;
@@ -250,7 +256,7 @@ container.querySelector(".circle");</code></pre>
     <!-- when to use which selector -->
     <section id="section6">
       <h2>Wann benutzt man welchen Selektor?</h2>
-      <p>Es gibt wie bei vielen Dingen <b>keine</b> genaue Angabe was man wann, wo oder wie benutzen soll. Das wichtigste ist immer, das es <b>funktioniert</b>.</p><p> Bei den DOM Selektoren ist es aber gut, den direktesten Weg zu nehmen ein Element in Javascript zu holen. Also bei einer ID halt einfach <b>document.getElementById();</b> nehmen und bei Tags <b>document.getElementsByTagName();</b>. Dies bietet eine bessere Lesbarkeit und Verständlichkeit des Codes, als wenn man nur den <b>querySelector</b> für alles benutzt. Zudem ist der querySelector am <b>rechenintensivsten</b>, da der übergebene String erst geparsed werden muss. Dies ist zwar meist zu vernachlässigen, aber dennoch sollte man ihn <b>Best Practice</b> nur dann verwenden, wenn man Elemente mit komplexeren Regeln selektieren möchte.</p>
+      <p>Es gibt wie bei vielen Dingen <b>keine</b> genaue Angabe was man wann, wo oder wie benutzen soll. Das wichtigste ist immer, das es <b>funktioniert</b>.</p><p> Bei den DOM Selektoren ist es aber gut, den direktesten Weg zu nehmen ein Element in Javascript zu holen. Also bei einer ID einfach <b>document.&shy;getElement&shy;ById();</b> nehmen und bei Tags <b>document.&shy;getElements&shy;ByTagName();</b>. Dies bietet meist eine bessere Lesbarkeit und Verständlichkeit des Codes, als wenn man nur den <b>querySelector</b> für alles benutzt. Für die ausschließliche Nutzung des querySelectors spricht dafür allerdings, dass alles einem Schema folgt und man immer die gleiche Methode nutzt. Der querySelector allerdings auch am <b>rechenintensivsten</b>, da der übergebene String erst geparsed werden muss. Dies ist zwar meist zu vernachlässigen, aber dennoch sollte man ihn <b>Best Practice</b> nur dann verwenden, wenn man Elemente mit komplexeren Regeln selektieren möchte.</p>
       <p>Es gibt noch weitere sehr <b>technische</b> Unterschiede, weshalb etwas seltenen Fällen nicht so funktioniert wie es soll und weshalb man dann einen anderen Selektor für diesen Fall benutzen sollte. Alles zu benennen wäre für diese <b>Dokumentation</b> jetzt aber zu viel gewesen.</p>
     </section>
   </main>
